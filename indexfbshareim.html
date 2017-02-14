@@ -2,20 +2,24 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Aloha FB</title>
+<title>Aloha2 FB</title>
 </head>
 <body>
 <div id="fb-root"></div>
 <div id="fb-content"></div>
 <div>
-  <a href="#" id="upload-trigger" onClick="javascript:fileUpload();">File Upload!</a>
+    
+  <a href="#" id="upload-trigger" onClick="javascript:postImage1();">File Upload!</a>
+    
   <form id="upload-photo-form" target="upload_iframe" method="post" enctype="multipart/form-data">
     <input id="upload-photo-form-file" name="file" size="27" type="file" />
   </form>
   <iframe id="upload_iframe" name="upload_iframe" witdh="0px" height="0px" border="0" style="width:0; height:0; border:none;"></iframe>
 </div>
+    
 <script type="application/javascript">
 var accessToken;
+    
 window.fbAsyncInit = function(){
   FB.init({
     appId: '1555131071181755',
@@ -42,6 +46,8 @@ window.fbAsyncInit = function(){
    }
   });
 };
+
+    
 // CHOOSE WHAT YOU WANT TO DO. THIS FUNCTION IS CALLED AUTOMATICALLY ON PAGE LOADING
 function doSomething() {
 //  postImage1();
@@ -49,6 +55,7 @@ function doSomething() {
 //  showFriends();
 }
 // UPLOAD A LOCAL IMAGE FILE, BUT THIS CAN NOT BE DONE WITHOUT USER'S MANUAL OPERATION BECAUSE OF SECURITY REASONS
+
 function fileUpload() {
   FB.api('/me/albums', function(response) {
     var album = response.data[0]; // Now, upload the image to first found album for easiness.
@@ -99,6 +106,7 @@ function postFeed() {
   );
 }
 // GET MY FRIEND LIST using FB.api (Just a copy from somewhere)
+
 function showFriends() {
   FB.api('/me/friends', function(response){
     var ul = document.createElement('ul');
